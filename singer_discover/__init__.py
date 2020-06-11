@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import os
+import collections
 import sys
 import argparse
 import json
@@ -94,7 +95,7 @@ def main():
                 'message': 'Select fields from stream: `{}`'.format(
                     stream['stream']),
                 'name': 'fields',
-                'choices': fields
+                'choices': sorted(fields, key=lambda k: k['name'])
             }
 
             selections = prompt(stream_options)
